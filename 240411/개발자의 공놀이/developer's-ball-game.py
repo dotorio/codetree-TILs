@@ -1,7 +1,6 @@
 N = int(input())
 devs = list(map(int, input().split()))
 devs.sort()
-
 ball, dir, idx = 0, 0, 0
 while True:
     start = devs[idx]
@@ -25,6 +24,7 @@ while True:
             idx += 1
         elif dir == 1:
             if dist > devs[idx] - next:
+                idx -= 1
                 break
             dist = devs[idx] - next
             
@@ -39,6 +39,8 @@ while True:
             next = devs[idx]
             idx += 1
     ball += 1
+    if idx == N:
+        break
     dir = 0
 
 print(ball)
