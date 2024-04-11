@@ -1,36 +1,37 @@
 N = int(input())
 devs = list(map(int, input().split()))
 devs.sort()
-ball, btn = 0, 0
-while devs:
-    start = devs.pop()
-    if not devs:
+ball, dir, idx = 0, 0, 0
+while True:
+    start = devs[idx]
+    idx += 1
+    if idx == N:
         ball += 1
-        break
-    next = devs.pop()
-    dis = start - next
-    while devs:
-        if not btn:
-            next2 = devs[-1]
-            if dis < next - next2:
-                # 오름차순
-                btn = 1            
+        break    
+    next = devs[idx]
+    dist = next - start
+    idx += 1
+    while idx != N:
+        if not dir:
+            if dist <= devs[idx] - next:
+                dir = 1                
             else:
-                # 내림차순
-                btn = 2
-            dis = next - next2
-            next = devs.pop()
-        elif btn == 1:
-            next2 = devs[-1]
-            if dis >= next - next2:
+                dir = 2
+            dist = devs[idx] - next
+            next = devs[idx]
+            idx += 1
+        elif dir == 1:
+            if dist > devs[idx] - next:
                 break
-            dis = next - next2
-            next = devs.pop()
+            dist = devs[idx] - next
+            next = devs[idx]
+            idx += 1
         else:
-            next2 = devs[-1]
-            if dis < next - next2:
+            if dist <= devs[idx] - next:
+                idx += 1
                 break
-            dis = next - next2
-            next = devs.pop()            
+            dist = devs[idx] - next
+            next = devs[idx]
+            idx += 1
     ball += 1
 print(ball)
