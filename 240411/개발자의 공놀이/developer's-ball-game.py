@@ -10,7 +10,7 @@ while devs:
     next = devs.pop()
     min_dis = start - next
     while devs:
-        if min_dis > next - devs[-1]:
+        if min_dis < next - devs[-1]:
             break
         min_dis = next - devs[-1]
         next = devs.pop()
