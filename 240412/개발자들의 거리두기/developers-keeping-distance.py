@@ -20,6 +20,7 @@ while idx != N:
         if devs[idx][1]:
             if devs[idx][0] - devs[idx-1][0] > inf_dis:
                 btn = False
+                idx -= 1
         else:
             btn = False
     idx += 1
