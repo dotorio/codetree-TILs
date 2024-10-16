@@ -66,7 +66,7 @@ def lose(idx):
     global players, p_loc, p_area
     can_move = True
     x, y = p_loc[idx]
-    heappush(area[x][y], players[idx][2])
+    heappush(area[x][y], -players[idx][2])
     players[idx][2] = 0
     while can_move:
         if 0 <= x + dx[players[idx][0]] < n and 0 <= y + dy[players[idx][0]] < n and p_area[x + dx[players[idx][0]]][y + dy[players[idx][0]]] == -1:
