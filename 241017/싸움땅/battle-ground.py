@@ -148,7 +148,7 @@ def get_next(x, y, d):
     # 반대 방향으로 한 칸 이동합니다.
     if not in_range(nx, ny):
         # 반대 방향 : 0 <. 2 / 1 <. 3
-        d = (d + 2) if d < 2 else (d - 2)
+        d = (d + 2) % 4
         nx, ny = x + dxs[d], y + dys[d]
 
     return (nx, ny, d)
