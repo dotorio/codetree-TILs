@@ -187,7 +187,7 @@ def move(p, pos):
     # 가장 좋은 총으로 갱신해줍니다.
     heapq.heappush(gun[nx][ny], -1*a)
 
-    a = -1* heapq.heappop(gun[nx][ny])
+    a = -heapq.heappop(gun[nx][ny])
 
 
     p = (num, nx, ny, d, s, a)
